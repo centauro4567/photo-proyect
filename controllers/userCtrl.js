@@ -1,4 +1,4 @@
-require('dotenv').config()
+
 const userCtrl = {};
 const user = require('../models/user')
 const bcryptjs = require('bcryptjs');
