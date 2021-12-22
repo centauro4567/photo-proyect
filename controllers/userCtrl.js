@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const userCtrl = {};
 const user = require('../models/user')
 const bcryptjs = require('bcryptjs');
@@ -56,13 +56,15 @@ userCtrl.signIn = async (req, res)=>{
         
         const foundUser = await user.findOne({username: reqUsername});
 
+        const secretKey = process.env.SECRET_KEY
+
         if(foundUser){
                 
             const match = await bcryptjs.compare(req.body.password, foundUser.password)
 
             if(match){
 
-                const token = jwt.sign(foundUser.username, process.env.SECRET_KEY)
+                const token = jwt.sign(foundUser.username, secretKey)
 
                 res.cookie('token', token, {httpOnly: true})
                 res.redirect('/api/photos/dashboard/'+foundUser._id)
