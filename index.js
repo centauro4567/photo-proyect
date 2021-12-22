@@ -17,6 +17,7 @@ app.use(cookieParser())
 //Base Routes
 app.use('/api/users', require('./routes/user.routes'))
 app.use('/api/photos', multer.single('img'), require('./routes/fotografia.routes'))
+app.use('/', (req, res)=>{res.render('login', {alert:false})})
 
 app.listen(app.get('port'), ()=>{
 

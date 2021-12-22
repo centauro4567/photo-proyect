@@ -1,4 +1,4 @@
-
+require('dotenv').config()
 
 const { json } = require('express/lib/response');
 const jwt = require('jsonwebtoken');
