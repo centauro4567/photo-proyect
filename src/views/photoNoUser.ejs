@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+<body style="margin-bottom: 100px;">
+    <%- include('partials/nav') %>
+
+
+    <div class="container w-75 mb-5">
+
+                <h3 style="background: rgb(255,40,75);
+                background: radial-gradient(circle, rgba(255,40,75,1) 0%, rgba(255,255,255,1) 100%);" class="text-center my-4 py-2"><%= photoNoUser.name %></h3>
+                <img style="max-height: 550px; object-fit:scale-down;" class="w-100" src="<%= photoNoUser.imgPath%>" alt="">
+                <p style="width: 23%; font-weight: bold;
+                background: rgb(90,90,255);
+                background: radial-gradient(circle, rgba(90,90,255,1) 50%, rgba(255,255,255,1) 100%);
+                border: none;" class="text-center mx-auto my-3 p-3"><%= photoNoUser.description %></p>
+
+    </div>
+
+
+</body>
+
+<%- include('partials/footer') %>
+</html>

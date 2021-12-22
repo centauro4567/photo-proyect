@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+<body style="margin-bottom: 100px;">
+    <%- include('partials/nav') %>
+
+
+    <div style="background: rgb(90,90,255);
+    background: linear-gradient(225deg, rgba(90,90,255,1) 0%, rgba(196,249,255,1) 35%, rgba(255,40,75,1) 100%);" 
+    class="container w-50 my-5">
+        
+        <form class="p-5" action="" enctype="multipart/form-data" method="post">
+
+            <div class="mb-3 text-center">
+
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" name="name" type="text" value="<%= photoFound.name %>">
+                    
+            </div>
+
+            <div class="mb-3 text-center">
+
+                <label class="form-label" for="description">Description</label>
+                <input class="form-control" name="description" type="text" value="<%= photoFound.description %>">
+    
+            </div>
+
+            <div class="my-2 d-flex text-center">
+
+                <input style="background-color: rgb(90, 90, 255); color: white; margin-right: 10px;" class="btn py-3 w-75" value="Edit" type="submit">
+                <a class="btn btn-secondary py-3 w-25 fst-italic text-decoration-none" href="/api/photos/dashboard/<%= userId %>/<%= photoFound._id %>"><i class="fas fa-times"></i> Cancel</a>
+    
+            </div>
+
+        </form>
+
+    </div>
+
+
+    
+</body>
+
+<%- include('partials/footer') %>
+</html>
