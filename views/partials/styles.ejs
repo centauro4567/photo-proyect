@@ -22,4 +22,73 @@
         background: rgb(255,40,75);
         background: radial-gradient(circle, rgba(255,40,75,1) 0%, rgba(255,255,255,1) 100%)
     }
+
+    /*---------------------------------------------------------------------------------------------------------*/
+
+    .containerMod{
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px){
+        .containerMod{
+            width: 50%;
+        }
+    }
+
+    .buttons{
+        flex-direction: column;
+    }
+    .lowButton{
+        margin-top: 1rem;
+        width: 100%;
+    }
+    .topButton{
+        width: 100%;
+    }
+
+    @media (min-width: 576px) {
+        .buttons{
+            flex-direction: row;
+        }
+
+        .lowButton{
+            margin-top: 0;
+            width: 25%;
+        }
+
+        .topButton{
+            width: 75%;
+        }
+    }
+
+    .imageDash{
+        border: none;
+        width: 75%;
+        
+    }
+    .imageHeight{
+        height: 250px;
+    }
+
+    @media (min-width: 768px) {
+        .imageDash{
+            width: 47%;
+        }
+
+        .imageHeight{
+        height: 200px;
+    }
+    }
+
+    @media (min-width: 992px) {
+        .imageDash{
+            width: 23%;
+        }
+
+        .imageHeight{
+        height: 150px;
+    }
+    }
+
 </style>

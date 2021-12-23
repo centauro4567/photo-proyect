@@ -10,13 +10,13 @@ render.signup = (req, res)=>{
 }
 
 render.createPhoto = (req, res)=>{
-    res.render('createPhoto', {userId: req.params.userId})
+    res.render('createPhoto', {alert:false ,userId: req.params.userId})
 }
 
 render.editPhoto = async (req, res)=>{
 
     const photoFound = await photo.findById(req.params.id)
-    res.render('editPhoto', {photoFound:photoFound, userId: req.params.userId})
+    res.render('editPhoto', {alert:false , photoFound:photoFound, userId: req.params.userId})
 }
 
 render.browse = async (req, res)=>{

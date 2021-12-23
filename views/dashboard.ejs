@@ -14,13 +14,12 @@
 
             <% for(var i = 0; i < photos.length; i++){ %>
 
-                <div style="width: 23%; border: none;
-                " class="colorBlueGradient card p-2 pb-4 m-2">
+                <div class="imageDash colorBlueGradient card p-2 pb-4 m-2">
 
                     <h5 style="height: 25px; overflow: hidden;" class="text-center"><%= photos[i].name %></h5>
 
                     <a href="/api/photos/dashboard/<%=photos[i].user._id%>/<%=photos[i]._id%>">
-                        <img style="max-height: 123.75px; object-fit: cover;" class="w-100" src="<%= photos[i].imgPath%>" alt="">
+                        <img style="object-fit: cover;" class="imageHeight w-100" src="<%= photos[i].imgPath%>" alt="">
                     </a>
 
                 </div>

@@ -7,7 +7,7 @@
 <body style="margin-bottom: 100px;">
     <%- include('partials/nav') %>
 
-    <div class="gradient container w-50 my-5">
+    <div class="gradient containerMod my-5">
         
         <form class="p-5" action="" enctype="multipart/form-data" method="post">
 
@@ -31,16 +31,32 @@
                 <input class="form-control" name="img" type="file">    
 
             </div>
-            <div class="my-2 d-flex text-center">
+            <div class="my-2 d-flex text-center buttons">
 
-                <input style="margin-right: 10px;" class="colorBlue btn py-3 w-75" value="Upload" type="submit">
-                <a class="btn btn-secondary py-3 w-25 fst-italic text-decoration-none" href="/api/photos/dashboard/<%= userId %>"><i class="fas fa-times"></i> Cancel</a>
+                <input style="margin-right: 10px;" class="topButton colorBlue btn py-3" value="Upload" type="submit">
+                <a class="btn btn-secondary py-3 fst-italic text-decoration-none lowButton" href="/api/photos/dashboard/<%= userId %>"><i class="fas fa-times"></i> Cancel</a>
     
             </div>
 
         </form>
 
     </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if(alert){ %>
+
+        <script>
+            Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '<%= alertText %>',
+            }).then(()=>{
+                window.location = '/api/photos/create/<%= userId %>'
+            })
+        </script>
+
+    <%}%>
 
 
     

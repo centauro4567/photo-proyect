@@ -66,23 +66,29 @@ photoCtrl.uploadPhoto = async (req, res)=>{
 
     try {
 
+        const{name, description} = req.body
+
+        if(name.trim()=='' || description.trim()=='' || req.file == null){
+            res.render('createPhoto', {alert: true, alertText: 'Fill all fields', userId: req.params.userId})
+        }else{
+
         const uploadedPhoto = await cloudinary.uploader.upload(req.file.path, {folder: 'proyecto de fotografias'})
 
-    const newPhoto = new photo({
+        const newPhoto = new photo({
 
-        name: req.body.name,
-        description: req.body.description,
+        name: name,
+        description: description,
         imgPath: uploadedPhoto.secure_url,
         imgId: uploadedPhoto.public_id,
         user: req.params.userId
 
-    })
+        })
 
-    await newPhoto.save();
+        await newPhoto.save();
 
-    res.redirect('/api/photos/dashboard/'+req.params.userId)
+        res.redirect('/api/photos/dashboard/'+req.params.userId)
 
-
+        }
     } catch (error) {
         console.log(error)
     }
@@ -95,7 +101,14 @@ photoCtrl.updatePhoto = async (req, res)=>{
 
     try {
 
+        const {name, description} = req.body
+
         const photoFound = await photo.findById(req.params.id)
+
+        if(name.trim()=='' || description.trim()==''){
+
+            res.render('editPhoto', {alert:true, alertText:'Fill all Fields', photoFound:photoFound, userId: req.params.userId})
+        }else{
 
         const name = req.body.name
         const description = req.body.description
@@ -105,7 +118,9 @@ photoCtrl.updatePhoto = async (req, res)=>{
 
         const finishPhoto = await photo.findByIdAndUpdate(req.params.id, photoFound, {new:true})
 
-    res.redirect('/api/photos/dashboard/'+req.params.userId)
+        res.redirect('/api/photos/dashboard/'+req.params.userId)
+
+        }
 
     } catch (error) {
         console.log(error)
