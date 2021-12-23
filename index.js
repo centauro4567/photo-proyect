@@ -14,10 +14,13 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use(cookieParser())
 
+app.use(express.static('views'));
+
 //Base Routes
 app.use('/api/users', require('./routes/user.routes'))
 app.use('/api/photos', multer.single('img'), require('./routes/fotografia.routes'))
 app.use('/', (req, res)=>{res.render('login', {alert:false})})
+
 
 app.listen(app.get('port'), ()=>{
 

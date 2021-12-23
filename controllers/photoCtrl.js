@@ -122,7 +122,6 @@ photoCtrl.deletePhoto = async (req, res)=>{
         const userIdFound = req.params.userId
 
         const deletedPhoto = await photo.findByIdAndDelete(req.params.id)
-        console.log(deletedPhoto);
         await cloudinary.uploader.destroy(deletedPhoto.imgId)
 
         res.redirect('/api/photos/dashboard/'+userIdFound)

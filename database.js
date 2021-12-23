@@ -1,6 +1,7 @@
+const env = require('./config/env')
 const mongoose = require('mongoose')
 
-const URI = process.env.MONGO_URI
+const URI = env.MONGO_URI
 
 
 mongoose.connect(URI)

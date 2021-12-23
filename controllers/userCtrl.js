@@ -1,4 +1,4 @@
-
+const env = require('../config/env')
 const userCtrl = {};
 const user = require('../models/user')
 const bcryptjs = require('bcryptjs');
@@ -33,7 +33,7 @@ userCtrl.signUp = async (req, res)=>{
                 })
     
             }else{
-                res.status(500).json({create: 'User already exist'})
+                rres.render('signup', {alert: true, alertText: 'User Already Exist'})
             }
 
         }
@@ -56,7 +56,7 @@ userCtrl.signIn = async (req, res)=>{
         
         const foundUser = await user.findOne({username: reqUsername});
 
-        const secretKey = process.env.SECRET_KEY
+        const secretKey = env.SECRET_KEY
 
         if(foundUser){
                 

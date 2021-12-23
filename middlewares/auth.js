@@ -1,4 +1,4 @@
-
+const env = require('../config/env')
 
 const { json } = require('express/lib/response');
 const jwt = require('jsonwebtoken');
@@ -7,7 +7,7 @@ module.exports = function(req, res, next){
 
     const token = req.cookies.token
 
-    const keySecret = process.env.SECRET_KEY
+    const keySecret = env.SECRET_KEY
 
     if(!token){
         res.status(500).send('No Token Found')
